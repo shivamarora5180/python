@@ -1,0 +1,49 @@
+l1=[]
+#add some string
+l1.append("America")
+l1.append("japan")
+l1.append("India")
+l1.append("German")
+#display the list
+print("The existing list=",l1)
+#display menu
+choice=0
+while choice < 6:
+    print("linked List operatins")
+    print("1: add element")
+    print("2:remove element")
+    print("3:replace element")
+    print("4:search element")
+    print("5:exit")
+    choice = int(input("your choice"))
+    if choice==1:
+     element= input("Enter element")
+     pos=int(input("at what position"))
+     l1.insert(pos,element)
+    elif choice==2:
+     try:
+        element=input("Enter element")
+        l1.remove(element)
+     except ValueError:
+        print("element not found")
+    elif choice==3:
+     element = input("Enter new element")
+     pos=int(input("at what position"))
+     l1.pop(pos)
+     l1.insert(pos,element)
+    elif choice==4:
+     element=input("Enter element")
+     print("enetr found at position",pos)
+    try:
+        pos=l1.index(element)
+    except ValueError:
+        print("element not found")
+    else:
+     break
+
+#display the list element
+print('list=',l1)
+    
+    
+        
+    
