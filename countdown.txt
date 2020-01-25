@@ -1,0 +1,6 @@
+import time
+s=int(input("enter seconds"))
+for i in range(s):
+    print(str(s-i))
+    time.sleep(i)
+print("countdown finished")
