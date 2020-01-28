@@ -1,0 +1,54 @@
+#pp to create phone book with names and phone number
+#create phonebook.dat file
+with open('F:\phonebook.dat','wb') as f:
+    #write data into files
+    n=int(input("how many entries"))
+    for i in range(n):
+        name=input("enter name")
+        phone=input("enter phone number")
+        #convert name and phone from strings to bytes
+        name=name.encode()
+        phone=phone.encode()
+        #write a data into the file
+        f.write(name+phone)
+#pp to mmap and performing various operations on a binary file
+#using mmap on a binary file
+import mmap,sys
+#display a menu
+print("1 to display all the entries")
+print("2 to display the phone number")
+print("3 to modify the entries")
+print("4 exit")
+ch=input("your choice")
+if ch=='4':
+    sys.exit()
+
+with open('F:\phonebook.dat','r+b') as f:
+    #memory map the file , size 0 means whole file
+    mm=mmap.mmap(f.fileno(),0)
+    #display the entrie file
+    if(ch=='1'):
+        print(mm.read().decode())
+    #display phone number
+    if(ch=='2'):
+        name=input('Enter Name:')
+        #find a pos of name
+        n=mm.find(name.encode())
+        #go to end of name
+        n1=n+len(name)
+        #display the next 10 byts
+        ph=mm[n1:n1+10]
+        print('phone number:',ph.decode())
+    #modify the phone number
+    if(ch=='3'):
+        name=input('Enter name')
+        #find a position
+        n=mm.find(name.encode())
+        #go to end of name
+        n1=n+len(name)
+        #enter the new phone number
+        ph1=input("enter new phone number")
+        #the old phone number is 10 bytes after n1
+        mm[n1:n1+10]=ph1.encode()
+    #close the map
+    mm.close()
