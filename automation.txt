@@ -1,0 +1,60 @@
+from openpyxl import Workbook
+wb=Workbook()
+filepath="F:/test.xlsx"
+sheet=wb.active
+wb.save("F:/test.xlsx")
+maxrows=sheet.max_row
+maxcols=sheet.max_column
+print(maxrows,maxcols)
+for i in range(1,(maxrows+1)):
+    valueindx='A'+str(i)
+    value=sheet[valueindx].value
+    sheet['A1']='Name'
+    sheet['B1']='Age'
+    sheet['C1']='Company'
+    sheet['D1']='Salary'
+    sheet['E1']='Designation'
+    wb.save("F:/test.xlsx")
+Ln=["anil","john","leo","sunil"]
+namecount=len(Ln)
+listcount=0
+for i in range(2,(namecount+2)):
+    colindx='A'+str(i)
+    sheet[colindx]=Ln[listcount]
+    listcount+=1
+wb.save("F:/test.xlsx")
+La=['25','27','29','32']
+namecount=len(La)
+listcount=0
+for i in range(2,(namecount+2)):
+    colindx='B'+str(i)
+    sheet[colindx]=La[listcount]
+    listcount+=1
+wb.save("F:/test.xlsx")
+Lc=['Tcs','ctg','ibm','cgi']
+namecount=len(Lc)
+listcount=0
+for i in range(2,(namecount+2)):
+    colindx='C'+str(i)
+    sheet[colindx]=Lc[listcount]
+    listcount+=1
+wb.save("F:/test.xlsx")
+Ls=['25000','27000','29000','32000']
+namecount=len(Ls)
+listcount=0
+for i in range(2,(namecount+2)):
+    colindx='D'+str(i)
+    sheet[colindx]=Ls[listcount]
+    listcount+=1
+    wb.save("F:/test.xlsx")
+Ld=['manager','owner','empl','peon']
+namecount=len(Ld)
+listcount=0
+for i in range(2,(namecount+2)):
+    colindx='E'+str(i)
+    sheet[colindx]=Ld[listcount]
+    listcount+=1
+    wb.save("F:/test.xlsx")
+
+
+    
