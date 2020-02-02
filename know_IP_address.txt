@@ -1,0 +1,9 @@
+#pp to find the IP addr of a website
+import socket
+host="www.google.co.in"
+try:
+    addr=socket.gethostbyname(host)
+    print("IP addr:"+addr)
+except socket.gaierror:
+    print("the website doesnot exists")#internet required
+
