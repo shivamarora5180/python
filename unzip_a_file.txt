@@ -1,0 +1,16 @@
+#to view the contents of a zip file
+from zipfile import *
+#open a zip file
+z=ZipFile('com.mysql.jdbc_5.1.5.jar','r')
+#extract all the file name which are in the zip file
+names=z.namelist()
+#view the content of the files
+for fname in names:
+    print("\n Contents of %s\n"%fname)
+    #read from zip file into file object f
+    f=z.open(fname)
+    #read the entire content of the file
+    contents=f.read()
+    #decode the content to string
+    print(contents.decode())
+f.close()
