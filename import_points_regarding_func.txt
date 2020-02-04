@@ -1,0 +1,35 @@
+#assign a fn to variable
+def display(str):
+    return 'shri ' +str
+x=display('krishna')
+print(x)
+
+def sum(n1,n2):
+    total =n1+n2
+    return total
+temp=sum
+print(temp(4,5))
+
+#pp to know how to define a fn inside another fn
+def display(str):
+    def message():
+        return 'How are u?'
+    result=message()+str
+    return result
+print(display("krishna"))
+
+#passing a fn as parameter to another fn
+def display(fun):
+    return 'hai' + fun
+def message():
+    return 'how are u?'
+     #call display() fn and pass message() fn
+print(display(message()))
+
+#program to know how a fn can return another fn
+def display():
+    def message():
+        return 'how are you?'
+    return message
+fun=display()
+print(fun())
