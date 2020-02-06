@@ -1,0 +1,36 @@
+num=[10,20,30,40,50]
+n=len(num)
+print(n)
+
+print('no of elements ',n)
+
+num.append(60)
+print('after appending',num)
+
+num.insert(0,5)
+print('after inserting ',num)
+
+x=num.index(30)
+print('print index',x)
+
+num1=num.copy()
+print('copied  ',num1)
+
+num.extend(num1)
+print('extend',num)
+
+n=num.count(50)
+print(num)
+
+num.pop()
+print(num)
+
+num.sort()
+print(num)
+
+num.reverse()
+print(num)
+
+num.clear()
+print(num)
+
