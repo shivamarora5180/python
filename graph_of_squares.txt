@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import numpy as np
+x=np.linspace(0,10,20)
+y=x**2
+plt.plot(x,y)
+#plt.show()
+plt.title("our first plot")
+plt.xlabel("x label")
+plt.ylabel("squares")
+plt.show()
+plt.subplot(1,2,1)
+#<matplotlib.axes._subjects.AxesSubplot objects at 0x00000172C1FCF2C8>
+plt.plot(x,y,'red')
+#<matplotlib.lines.Line2D objects at 0x00000172C66A05C8>
+plt.subplot(1,2,2)
+#<matplotlib.axes._subjects.AxesSubplot objects at 0x00000172C1FCF2C8>
+plt.plot(y,x,'green')
+plt.show()
