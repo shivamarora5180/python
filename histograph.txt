@@ -1,0 +1,17 @@
+import matplotlib.pyplot as plt
+import numpy as np
+ages=[2,5,70,40,30,45,50,45,43,40,44,60,7,13,57,18,90,77,32,21,20,40]
+range=(0,100)
+bins=8
+plt.hist(ages,bins,range,color='green',histtype='bar',rwidth=0.8)
+plt.xlabel('age')
+plt.ylabel('no of ppl')
+plt.title("my histograph")
+plt.show()
+
+#plt.hist() is ued to plot a histograph
+#frequencies are passed as the ages list
+#range could be set by defining a tuple containing min and max value'
+#next step is the 'bin' the range of values that is,divide the entire range of values
+#into a series of intervals and then count how many values fall into each interval here we defined
+#bins=10,100/10=10 therefore 10 intervals
