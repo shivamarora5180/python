@@ -1,0 +1,18 @@
+An array is monotonic if and only if it is monotone increasing, or monotone decreasing. Since p <= q and q <= r implies p <= r. So we only need to check adjacent elements to determine if the array is monotone increasing (or decreasing), respectively. We can check each of these properties in one pass.
+To check whether an array A is monotone increasing, we’ll check A[i] <= A[i+1] for all i indexing from 0 to len(A)-2. Similarly we can check for monotone decreasing where A[i] >= A[i+1] for all i indexing from 0 to len(A)-2.
+Note: Array with single element can be considered to be both monotonic increasing or decreasing, hence returns “True“.
+
+# program to find sum in Nth group 
+
+# Check if given array is Monotonic 
+def isMonotonic(A): 
+
+	return (all(A[i] <= A[i + 1] for i in range(len(A) - 1)) or
+			all(A[i] >= A[i + 1] for i in range(len(A) - 1))) 
+
+# Driver program 
+A = [6, 5, 4, 4] 
+print(isMonotonic(A)) 
+
+
+
