@@ -1,0 +1,120 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "'''Web scraping is used to extract huge amount of data from website which then stored into a local file in your computer or in any other database.\n",
+    "\n",
+    "Basically web scraping is not legal. If you request too many times then your IP will automatically blocked then you can't access.\n",
+    "\n",
+    "In this concept many people get meta tag and html code as well which is considered to be garbage so to rectify that you should use (.text) after the print statement.\n",
+    "\n",
+    "For webscraping you need :\n",
+    "\n",
+    "Scrapy â€“ The complete framework\n",
+    "Urllib\n",
+    "Python Requests\n",
+    "Selenium\n",
+    "Beautifulsoup\n",
+    "LXML \n",
+    "\n",
+    "You can download these libraries in your any platform.\n",
+    "- conda install NameOfTheLibrary\n",
+    "- pip install NameOfTheLibrary'''"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "rom bs4 import BeautifulSoup as soup\n",
+    "from urllib.request import urlopen as uReq\n",
+    "\n",
+    "\n",
+    "my_url = 'https://www.flipkart.com/search?q=iphone&sid=tyy%2C4io&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_0_4&otracker1=AS_QueryStore_OrganicAutoSuggest_0_4&as-pos=0&as-type=RECENT&as-backfill=on'\n",
+    "\n",
+    "\n",
+    "uClient = uReq(my_url)\n",
+    "page_html = uClient.read()\n",
+    "uClient.close()\n",
+    "page_soup = soup(page_html,\"html.parser\")\n",
+    "\n",
+    "\n",
+    "containers = page_soup.findAll(\"div\", {\"class\":\"_3O0U0u\"})\n",
+    "print(len(containers))\n",
+    "print(soup.prettify(containers[0]))\n",
+    "\n",
+    "container = containers[0]\n",
+    "print(container.div.img[\"alt\"])\n",
+    " \n",
+    "price = container.findAll(\"div\",{\"class\":\"col col-5-12 _2o7WAb\"})\n",
+    "print(price[0].text)\n",
+    " \n",
+    "ratings = container.findAll(\"div\",{\"class\":\"niH0FQ\"})\n",
+    "print (ratings[0].text)\n",
+    "\n",
+    "filename = \"Scrappeddata.csv\"\n",
+    "f = open(filename,\"w\")\n",
+    " \n",
+    "headers = \"Products_Name, Pricing , Ratings\\n\"\n",
+    "f.write(headers)\n",
+    "\n",
+    "for container in containers:\n",
+    "     product_name = container.div.img[\"alt\"]\n",
+    "     price_container = container.findAll(\"div\",{\"class\":\"col col-5-12 _2o7WAb\"})\n",
+    "     price = price_container[0].text.strip()\n",
+    "     rating_container = container.findAll(\"div\",{\"class\":\"niH0FQ\"}) \n",
+    "     rating = rating_container[0].text\n",
+    "     print(\"product_name:\" + product_name)\n",
+    "     #print(\"price:\" + price) \n",
+    "     #print(\"ratings:\" + rating)\n",
+    "\n",
+    "     trim_price = ''.join(price.split(','))\n",
+    "     rm_rupee = trim_price.split(\"â‚¹\") \n",
+    "     add_rs_price = \"Rs.\" + rm_rupee[1] \n",
+    "     split_price = add_rs_price.split('E')  \n",
+    "     final_price = split_price[0]\n",
+    "    \n",
+    "     split_rating = rating.split(\" \")\n",
+    "     final_rating = split_rating[0]\n",
+    "     #print(product_name.replace(\",\",\"|\") + \",\" + final_price + \",\" +  final_rating + \"\\n\")\n",
+    "     f.write(product_name.replace(\",\", \"|\") + \",\" + final_price + \",\" + final_rating + \"\\n\")\n",
+    " \n",
+    "f.close()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
