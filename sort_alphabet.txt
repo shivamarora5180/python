@@ -1,0 +1,47 @@
+
+Python Examples
+Add Two Matrices
+Transpose a Matrix
+Multiply Two Matrices
+Check Whether a String is Palindrome or Not
+Remove Punctuations From a String
+Sort Words in Alphabetic Order
+Illustrate Different Set Operations
+Count the Number of Each Vowel
+
+Join our newsletter for the latest updates.
+Enter Email Address*
+Join
+
+Python Programming
+Examples
+Python Program to Sort Words in Alphabetic Order
+Python Program to Sort Words in Alphabetic Order
+In this program, you'll learn to sort the words in alphabetic order using for loop and display it.
+
+To understand this example, you should have the knowledge of the following Python programming topics:
+
+Python for Loop
+Python Strings
+Python String Methods
+In this example, we illustrate how words can be sorted lexicographically (alphabetic order).
+
+Source Code
+# Program to sort alphabetically the words form a string provided by the user
+
+my_str = "Hello this Is an Example With cased letters"
+
+# To take input from the user
+#my_str = input("Enter a string: ")
+
+# breakdown the string into a list of words
+words = my_str.split()
+
+# sort the list
+words.sort()
+
+# display the sorted words
+
+print("The sorted words are:")
+for word in words:
+   print(word)
