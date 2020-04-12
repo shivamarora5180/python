@@ -1,0 +1,11 @@
+import smtplib
+SENDER_EMAIL=""
+SENDER_PASSWORD=""
+
+def send_email(receiver_email,subject,body):
+    message="Subject: {}\n\n{}".format (subject,body)
+    with smtplib.SMTP_SSL("smtp.gmail.com",465) as server:
+        server.login(sender@gmail.com, password)
+        server.sender(sender@gmail.com, receiver@gmail.com,1234567890)
+if __name__=="__main__":
+    send_email("receiver@gmail.com","Notification","Everything is awesome!")
