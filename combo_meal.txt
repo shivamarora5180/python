@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int profit(int b, int s, int c) {
+    return (b + s - c);
+}
+
+int main() {
+    int t;
+    cin >> t;
+    for(int a0 = 0; a0 < t; a0++){
+        int b;
+        int s;
+        int c;
+        cin >> b >> s >> c;
+        int result = profit(b, s, c);
+        cout << result << endl;
+    }
+    return 0;
+}
+
+
+
+
+
+import sys
+
+def profit(b, s, c):
+    # Return the fixed profit.
+    return b+s-c
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for a0 in range(t):
+        b, s, c = input().strip().split(' ')
+        b, s, c = [int(b), int(s), int(c)]
+        result = profit(b, s, c)
+        print(result)
